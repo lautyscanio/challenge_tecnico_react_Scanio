@@ -1,0 +1,307 @@
+/* ───────────────────────────────────────────
+   Design tokens
+   ─────────────────────────────────────────── */
+
+:root {
+  --c-bg: #0b0d19;
+  --c-surface: #12152a;
+  --c-surface-2: #191d38;
+  --c-border: #262b4a;
+  --c-text: #e8eaf6;
+  --c-text-dim: #7c82a0;
+
+  --c-primary: #7c3aed;
+  --c-primary-glow: rgba(124, 58, 237, .35);
+  --c-primary-hover: #9061f0;
+
+  --c-green: #10b981;
+  --c-green-hover: #059669;
+  --c-red: #ef4444;
+  --c-yellow: #eab308;
+  --c-blue: #38bdf8;
+
+  --c-disabled-bg: #1e2140;
+  --c-disabled-text: #4a4f6a;
+
+  --radius: 14px;
+  --radius-sm: 8px;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --shadow: 0 8px 32px rgba(0, 0, 0, .5);
+  --transition: .18s ease;
+}
+
+/* ───────────────────────────────────────────
+   Reset
+   ─────────────────────────────────────────── */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--font);
+  background: var(--c-bg);
+  color: var(--c-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* ───────────────────────────────────────────
+   App shell
+   ─────────────────────────────────────────── */
+
+.app {
+  background: var(--c-surface);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius);
+  padding: 44px 36px;
+  width: 100%;
+  max-width: 440px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* ───────────────────────────────────────────
+   Header
+   ─────────────────────────────────────────── */
+
+.header { text-align: center; }
+
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -.04em;
+  background: linear-gradient(135deg, var(--c-primary), var(--c-blue));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.subtitle {
+  color: var(--c-text-dim);
+  font-size: .88rem;
+  margin-top: 4px;
+}
+
+/* ───────────────────────────────────────────
+   ScoreBoard
+   ─────────────────────────────────────────── */
+
+.scoreboard {
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.scoreboard-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.scoreboard-label {
+  font-size: .82rem;
+  color: var(--c-text-dim);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.scoreboard-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.score-active {
+  color: var(--c-blue);
+}
+
+/* Timer bar */
+.timer-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.timer-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--c-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.timer-bar-fill {
+  height: 100%;
+  background: var(--c-green);
+  border-radius: 4px;
+  transition: width 1s linear;
+}
+
+.timer-bar-fill--danger {
+  background: var(--c-red);
+}
+
+.timer-text {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--c-text-dim);
+  min-width: 2ch;
+  text-align: right;
+}
+
+/* ───────────────────────────────────────────
+   Countdown
+   ─────────────────────────────────────────── */
+
+.countdown-slot {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-text {
+  font-size: 3.2rem;
+  font-weight: 900;
+  color: var(--c-primary);
+  text-shadow: 0 0 24px var(--c-primary-glow);
+  animation: pop .35s cubic-bezier(.2, .8, .3, 1.4);
+}
+
+@keyframes pop {
+  0%   { opacity: 0; transform: scale(.5); }
+  70%  { transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* ───────────────────────────────────────────
+   Result banner
+   ─────────────────────────────────────────── */
+
+.result-banner {
+  text-align: center;
+  padding: 18px;
+  border-radius: var(--radius-sm);
+  background: var(--c-surface-2);
+  border: 1px solid var(--c-border);
+  animation: slideUp .3s ease;
+}
+
+.result-banner--record {
+  border-color: var(--c-yellow);
+  background: rgba(234, 179, 8, .08);
+}
+
+.result-score {
+  font-size: 1.6rem;
+  font-weight: 700;
+  display: block;
+}
+
+.result-badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--c-yellow);
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ───────────────────────────────────────────
+   Controls
+   ─────────────────────────────────────────── */
+
+.controls {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  flex: 1;
+  padding: 15px 16px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition);
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(.96);
+}
+
+.btn:disabled {
+  background: var(--c-disabled-bg);
+  color: var(--c-disabled-text);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Start / Restart */
+.btn-start {
+  background: var(--c-green);
+  color: #fff;
+}
+
+.btn-start:hover:not(:disabled) {
+  background: var(--c-green-hover);
+}
+
+.btn-restart {
+  background: var(--c-green);
+  color: #fff;
+  animation: pulse 1.5s infinite;
+}
+
+.btn-restart:hover {
+  background: var(--c-green-hover);
+  animation: none;
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, .5); }
+  50%      { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+}
+
+/* Click */
+.btn-click {
+  background: var(--c-primary);
+  color: #fff;
+}
+
+.btn-click:hover:not(:disabled) {
+  background: var(--c-primary-hover);
+}
+
+.btn-click--ready {
+  box-shadow: 0 0 20px var(--c-primary-glow);
+}
+
+.btn-click--ready:active {
+  transform: scale(.92);
+}
+
+/* ───────────────────────────────────────────
+   Responsive
+   ─────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .app { padding: 28px 20px; gap: 20px; }
+  .title { font-size: 1.7rem; }
+  .countdown-text { font-size: 2.5rem; }
+  .controls { flex-direction: column; }
+}

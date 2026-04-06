@@ -1,0 +1,202 @@
+/* Variables CSS */
+:root {
+  --color-bg: #0f111a;
+  --color-surface: #1a1d2e;
+  --color-surface-2: #222537;
+  --color-border: #2e3150;
+  --color-text: #e2e8f0;
+  --color-text-muted: #8892a4;
+  --color-accent: #6366f1;
+  --color-accent-hover: #818cf8;
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+  --color-blue: #38bdf8;
+  --color-yellow: #facc15;
+  --color-red: #f87171;
+  --color-disabled: #374151;
+  --color-disabled-text: #6b7280;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --transition: 0.2s ease;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 16px;
+}
+
+/* Layout principal */
+.app {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+/* Header */
+.app-header {
+  margin-bottom: 32px;
+}
+
+.app-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+}
+
+.app-subtitle {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+/* Main */
+.app-main {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Score Display */
+.score-display {
+  background-color: var(--color-surface-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.score-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.score-label {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.score-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.highlight-blue { color: var(--color-blue); }
+.highlight-yellow { color: var(--color-yellow); }
+.highlight-red { color: var(--color-red); }
+
+/* Countdown Area */
+.countdown-area {
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.countdown-display {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--color-accent);
+  letter-spacing: -0.02em;
+  animation: fadeInScale 0.3s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Game Controls */
+.game-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition), transform var(--transition), opacity var(--transition);
+  letter-spacing: 0.01em;
+}
+
+.btn:disabled {
+  background-color: var(--color-disabled);
+  color: var(--color-disabled-text);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-start {
+  background-color: var(--color-success);
+  color: #fff;
+}
+
+.btn-start:hover:not(:disabled) {
+  background-color: var(--color-success-hover);
+}
+
+.btn-click {
+  background-color: var(--color-accent);
+  color: #fff;
+}
+
+.btn-click:hover:not(:disabled) {
+  background-color: var(--color-accent-hover);
+}
+
+.btn-click--active:active {
+  transform: scale(0.94);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .app {
+    padding: 28px 20px;
+  }
+
+  .app-title {
+    font-size: 1.6rem;
+  }
+
+  .countdown-display {
+    font-size: 2.5rem;
+  }
+
+  .game-controls {
+    flex-direction: column;
+  }
+}
