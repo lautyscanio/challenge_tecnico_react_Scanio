@@ -17,7 +17,8 @@ El juego permite al usuario competir contra sí mismo haciendo la mayor cantidad
 
 ```bash
 # Clonar el repositorio y entrar a esta carpeta
-cd junior
+git clone https://github.com/lautyscanio/challenge_tecnico_react_Scanio.git
+cd challenge_tecnico_react_Scanio
 
 # Instalar dependencias
 npm install
@@ -28,41 +29,12 @@ npm run dev
 
 La aplicación estará disponible en `http://localhost:5173`
 
-### Build para producción
 
-```bash
-npm run build
-npm run preview
-```
-
-## Estructura del proyecto
-
-```
-junior/
-├── index.html
-├── package.json
-├── vite.config.js
-└── src/
-    ├── main.jsx
-    ├── App.jsx       ← Componente principal con toda la lógica
-    └── App.css       ← Estilos del juego
-```
-
-## Decisiones técnicas
-
-### Por qué un solo componente
-Para este nivel del challenge, se optó por mantener toda la lógica en el componente `App.jsx`. Esto refleja el enfoque natural de un desarrollador junior que prioriza que "funcione" antes que la separación de responsabilidades.
-
-### Estados utilizados
-- `maxScore` – Puntaje máximo histórico de la sesión
-- `currentScore` – Contador de clics del juego actual
-- `gameStarted` – Indica si el proceso de inicio fue activado
-- `gameActive` – Indica si los 5 segundos de juego están activos
-- `countdown` – Mensaje de cuenta regresiva actual
-- `timeLeft` – Segundos restantes del juego activo
-
-### Supuestos y consideraciones
+### Requisitos cumplidos
 - El puntaje máximo se reinicia al recargar la página (no hay persistencia)
 - El tiempo de cuenta regresiva es exactamente 1 segundo por mensaje
 - No se puede hacer clic mientras se muestra la cuenta regresiva
 - Si el usuario cierra/recarga la pestaña durante el juego, el timer se limpia automáticamente gracias al cleanup del `useEffect`
+
+### Aclaraciones
+Aunque la mayoria del codigo la saque de internet hay cosas como algunas partes html que las hice con ia porque no me salian, despues me di cuenta que la ia lo separaba por componentes, pero yo no lo sabia y lo hice todo en app.
